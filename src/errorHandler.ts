@@ -5,11 +5,11 @@ import { fetchProductCatalog, fetchProductReviews, fetchSalesReport } from './ap
 
 
 
-// Fetch product catalog
+// fetching the product catalog
 fetchProductCatalog()
   .then(products => {
     console.log('Product catalog:', products);
-    // Example: Fetch reviews for the first product if available
+    // fetch product reviews for the first product
     if (products.length > 0) {
       fetchProductReviews(products[0].id)
         .then(reviews => {
@@ -30,7 +30,7 @@ fetchProductCatalog()
     console.log('Product catalog request completed.');
   });
 
-// Fetch sales report
+// fetching sales report
 fetchSalesReport()
   .then(report => {
     console.log('Sales report:', report);
@@ -43,8 +43,8 @@ fetchSalesReport()
   });
 
 
-// Custom Error Classes
-  export class NetworkError extends Error {
+// Custom Error Classes class NetworkError extends Error {
+class NetworkError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "NetworkError";
@@ -52,10 +52,11 @@ fetchSalesReport()
   }
 }
 
-export class DataError extends Error {
+class DataError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "DataError";
     Object.setPrototypeOf(this, DataError.prototype);
   }
 }
+export { NetworkError, DataError };
