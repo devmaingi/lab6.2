@@ -28,4 +28,4 @@ async function mainApp() {
 }
 
 // Run the main function
-mainApp();
+export default mainApp;

@@ -1,10 +1,6 @@
 import { fetchProductCatalog, fetchProductReviews, fetchSalesReport } from './apiSimulator';
 
 
-
-
-
-
 // fetching the product catalog
 fetchProductCatalog()
   .then(products => {
@@ -43,20 +39,19 @@ fetchSalesReport()
   });
 
 
-// Custom Error Classes class NetworkError extends Error {
+// Custom Error Classes class NetworkError extends Error 
 class NetworkError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "NetworkError";
-    Object.setPrototypeOf(this, NetworkError.prototype);
   }
 }
-
+// Data error class
 class DataError extends Error {
   constructor(message: string) {
     super(message);
     this.name = "DataError";
-    Object.setPrototypeOf(this, DataError.prototype);
   }
 }
+
 export { NetworkError, DataError };
