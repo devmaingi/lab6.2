@@ -43,7 +43,7 @@ export { fetchProductCatalog };
 function fetchProductReviews(productId: number): Promise<Review[]> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Simulating random failure 
+      // Simulating some failure 
       if (Math.random() < 0.3) {
         reject(`Failed to fetch reviews for product ID ${productId}`);
         return;
@@ -62,12 +62,7 @@ function fetchProductReviews(productId: number): Promise<Review[]> {
           comment: "Good value, works as described.",
           date: "2025-09-14"
         },
-        {
-          reviewer: "Charlie",
-          rating: 3,
-          comment: "Average quality, could improve packaging.",
-          date: "2025-08-06"
-        }
+        
       ];
       resolve(reviews);
     }, 1500);
