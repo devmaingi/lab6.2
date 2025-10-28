@@ -23,8 +23,8 @@ interface SalesReport  {
   averagePrice: number;
 }
 
-export const fetchProductCatalog = (): Promise<Product[]> => {
-    return new Promise((resolve, reject) => {
+function fetchProductCatalog(): Promise<Product[]> {
+    return new Promise<Product[]>((resolve, reject) => {
     setTimeout(() => {
         if (Math.random() < 0.8) {
         resolve([
@@ -38,16 +38,17 @@ export const fetchProductCatalog = (): Promise<Product[]> => {
     });
 };
 
+export { fetchProductCatalog };
 
-export function fetchProductReviews(productId: number): Promise<Review[]> {
+function fetchProductReviews(productId: number): Promise<Review[]> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // Simulate random failure (~30% chance)
+      // Simulating random failure 
       if (Math.random() < 0.3) {
         reject(`Failed to fetch reviews for product ID ${productId}`);
         return;
       }
-      // Mock reviews array
+      // sample reviews 
       const reviews: Review[] = [
         {
           reviewer: "Alice",
@@ -72,15 +73,18 @@ export function fetchProductReviews(productId: number): Promise<Review[]> {
     }, 1500);
   });
 }
-export function fetchSalesReport(): Promise<SalesReport> {
+export { fetchProductReviews };
+
+function fetchSalesReport(): Promise<SalesReport> {
   return new Promise((resolve, reject) => {
     setTimeout(() => {
-      // simulating a 30% chance of network error
+      // simulating network error
       if (Math.random() < 0.3) {
         reject(new NetworkError("Failed to fetch sales report"));
         return;
       }
-      // simulating 10% chance of data error
+
+      // simulating data error
       if (Math.random() < 0.1) {
         reject(new DataError("Sales report data missing required fields"));
         return;
@@ -93,3 +97,4 @@ export function fetchSalesReport(): Promise<SalesReport> {
     }, 1000);
   });
 }
+export { fetchSalesReport };
